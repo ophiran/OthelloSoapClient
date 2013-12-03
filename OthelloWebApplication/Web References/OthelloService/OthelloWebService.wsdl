@@ -5,6 +5,12 @@
       <xsd:import schemaLocation="http://ophiran-pc:10500/OthelloWebService/OthelloWebService?xsd=1" namespace="http://webservice/" />
     </xsd:schema>
   </types>
+  <message name="infoPlayer">
+    <part name="parameters" element="tns:infoPlayer" />
+  </message>
+  <message name="infoPlayerResponse">
+    <part name="parameters" element="tns:infoPlayerResponse" />
+  </message>
   <message name="hello">
     <part name="parameters" element="tns:hello" />
   </message>
@@ -12,6 +18,10 @@
     <part name="parameters" element="tns:helloResponse" />
   </message>
   <portType name="OthelloWebService">
+    <operation name="infoPlayer">
+      <input wsam:Action="http://webservice/OthelloWebService/infoPlayerRequest" message="tns:infoPlayer" />
+      <output wsam:Action="http://webservice/OthelloWebService/infoPlayerResponse" message="tns:infoPlayerResponse" />
+    </operation>
     <operation name="hello">
       <input wsam:Action="http://webservice/OthelloWebService/helloRequest" message="tns:hello" />
       <output wsam:Action="http://webservice/OthelloWebService/helloResponse" message="tns:helloResponse" />
@@ -19,6 +29,15 @@
   </portType>
   <binding name="OthelloWebServicePortBinding" type="tns:OthelloWebService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="infoPlayer">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="hello">
       <soap:operation soapAction="" />
       <input>

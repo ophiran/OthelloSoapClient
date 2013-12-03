@@ -29,6 +29,8 @@ namespace OthelloWebApplication.OthelloService {
     [System.Web.Services.WebServiceBindingAttribute(Name="OthelloWebServicePortBinding", Namespace="http://webservice/")]
     public partial class OthelloWebService : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
+        private System.Threading.SendOrPostCallback infoPlayerOperationCompleted;
+        
         private System.Threading.SendOrPostCallback helloOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
@@ -70,7 +72,40 @@ namespace OthelloWebApplication.OthelloService {
         }
         
         /// <remarks/>
+        public event infoPlayerCompletedEventHandler infoPlayerCompleted;
+        
+        /// <remarks/>
         public event helloCompletedEventHandler helloCompleted;
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("", RequestNamespace="http://webservice/", ResponseNamespace="http://webservice/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public playerProfile infoPlayer([System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] string username) {
+            object[] results = this.Invoke("infoPlayer", new object[] {
+                        username});
+            return ((playerProfile)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void infoPlayerAsync(string username) {
+            this.infoPlayerAsync(username, null);
+        }
+        
+        /// <remarks/>
+        public void infoPlayerAsync(string username, object userState) {
+            if ((this.infoPlayerOperationCompleted == null)) {
+                this.infoPlayerOperationCompleted = new System.Threading.SendOrPostCallback(this.OninfoPlayerOperationCompleted);
+            }
+            this.InvokeAsync("infoPlayer", new object[] {
+                        username}, this.infoPlayerOperationCompleted, userState);
+        }
+        
+        private void OninfoPlayerOperationCompleted(object arg) {
+            if ((this.infoPlayerCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.infoPlayerCompleted(this, new infoPlayerCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("", RequestNamespace="http://webservice/", ResponseNamespace="http://webservice/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -118,6 +153,93 @@ namespace OthelloWebApplication.OthelloService {
                 return true;
             }
             return false;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://webservice/")]
+    public partial class playerProfile {
+        
+        private string usernameField;
+        
+        private int winsField;
+        
+        private int lossField;
+        
+        private string[] gameListField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string username {
+            get {
+                return this.usernameField;
+            }
+            set {
+                this.usernameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int wins {
+            get {
+                return this.winsField;
+            }
+            set {
+                this.winsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int loss {
+            get {
+                return this.lossField;
+            }
+            set {
+                this.lossField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string[] gameList {
+            get {
+                return this.gameListField;
+            }
+            set {
+                this.gameListField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
+    public delegate void infoPlayerCompletedEventHandler(object sender, infoPlayerCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class infoPlayerCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal infoPlayerCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public playerProfile Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((playerProfile)(this.results[0]));
+            }
         }
     }
     

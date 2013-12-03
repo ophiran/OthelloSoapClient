@@ -22,7 +22,7 @@
                 </asp:Menu>
             </asp:Panel>
         </asp:Panel>
-        <asp:ListBox ID="ListBoxGames" runat="server" Height="372px" Width="250px"></asp:ListBox>
+        <asp:ListBox ID="ListBoxGames" runat="server" Height="372px" Width="307px" Rows="20"></asp:ListBox>
         <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
     </asp:Panel>
 

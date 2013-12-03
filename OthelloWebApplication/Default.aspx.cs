@@ -19,9 +19,18 @@ namespace OthelloWebApplication
         protected void Page_Load(object sender, EventArgs e)
         {
             proxy = new OthelloWebService();
-
-            Label2.Text = proxy.hello("test");
-            Console.Out.WriteLine(proxy.hello("test"));
+            playerProfile player = proxy.infoPlayer("toto");
+            List<ListItem> items = new List<ListItem>();
+            foreach (string item in player.gameList)
+            {
+                ListItem lItem = new ListItem(item.Replace("&nbsp;", " "));
+                items.Add(lItem);
+            }
+            ListBoxGames.Items.AddRange(items.ToArray());
+            Label2.Text = player.gameList[0];
+            System.Diagnostics.Debug.WriteLine(player.gameList[0]);
+            Console.Out.WriteLine("toto");
+            Console.Out.WriteLine(player.gameList[0]);
         }
 
 
