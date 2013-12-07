@@ -2,7 +2,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <asp:Panel ID="Panel1" runat="server" Height="458px" Width="1070px">
+    <asp:Panel ID="Panel1" runat="server" Height="577px" Width="1070px">
         <asp:Panel ID="Panel3" runat="server">
             <asp:Panel ID="Panel2" runat="server" BackColor="#666666" Width="1066px">
                 <asp:Menu ID="Menu1" runat="server" BackColor="#666666" Font-Bold="True" ForeColor="#66CCFF">
@@ -22,8 +22,10 @@
                 </asp:Menu>
             </asp:Panel>
         </asp:Panel>
-        <asp:ListBox ID="ListBoxGames" runat="server" Height="372px" Width="250px"></asp:ListBox>
-        <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+        <asp:ListBox ID="ListBoxGames" runat="server" Height="372px" Width="307px" Rows="20"></asp:ListBox>
+        <br />
+        <asp:MultiView ID="MultiView1" runat="server">
+        </asp:MultiView>
     </asp:Panel>
 
 </asp:Content>
