@@ -331,10 +331,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://ophiran-pc:10500/OthelloWebService/OthelloWebService%3fwsdl">
+    <WebReferenceUrl Include="http://ophiran-laptop:10800/OthelloWebService/OthelloWebService%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\OthelloService\</RelPath>
-      <UpdateFromURL>http://ophiran-pc:10500/OthelloWebService/OthelloWebService%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://ophiran-laptop:10800/OthelloWebService/OthelloWebService%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

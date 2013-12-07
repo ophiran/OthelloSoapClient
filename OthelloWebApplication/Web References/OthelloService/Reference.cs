@@ -29,9 +29,9 @@ namespace OthelloWebApplication.OthelloService {
     [System.Web.Services.WebServiceBindingAttribute(Name="OthelloWebServicePortBinding", Namespace="http://webservice/")]
     public partial class OthelloWebService : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private System.Threading.SendOrPostCallback infoPlayerOperationCompleted;
-        
         private System.Threading.SendOrPostCallback helloOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback infoPlayerOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -72,40 +72,10 @@ namespace OthelloWebApplication.OthelloService {
         }
         
         /// <remarks/>
-        public event infoPlayerCompletedEventHandler infoPlayerCompleted;
-        
-        /// <remarks/>
         public event helloCompletedEventHandler helloCompleted;
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("", RequestNamespace="http://webservice/", ResponseNamespace="http://webservice/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public playerProfile infoPlayer([System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] string username) {
-            object[] results = this.Invoke("infoPlayer", new object[] {
-                        username});
-            return ((playerProfile)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void infoPlayerAsync(string username) {
-            this.infoPlayerAsync(username, null);
-        }
-        
-        /// <remarks/>
-        public void infoPlayerAsync(string username, object userState) {
-            if ((this.infoPlayerOperationCompleted == null)) {
-                this.infoPlayerOperationCompleted = new System.Threading.SendOrPostCallback(this.OninfoPlayerOperationCompleted);
-            }
-            this.InvokeAsync("infoPlayer", new object[] {
-                        username}, this.infoPlayerOperationCompleted, userState);
-        }
-        
-        private void OninfoPlayerOperationCompleted(object arg) {
-            if ((this.infoPlayerCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.infoPlayerCompleted(this, new infoPlayerCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
+        public event infoPlayerCompletedEventHandler infoPlayerCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("", RequestNamespace="http://webservice/", ResponseNamespace="http://webservice/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -134,6 +104,36 @@ namespace OthelloWebApplication.OthelloService {
             if ((this.helloCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.helloCompleted(this, new helloCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("", RequestNamespace="http://webservice/", ResponseNamespace="http://webservice/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public playerProfile infoPlayer([System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] string username) {
+            object[] results = this.Invoke("infoPlayer", new object[] {
+                        username});
+            return ((playerProfile)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void infoPlayerAsync(string username) {
+            this.infoPlayerAsync(username, null);
+        }
+        
+        /// <remarks/>
+        public void infoPlayerAsync(string username, object userState) {
+            if ((this.infoPlayerOperationCompleted == null)) {
+                this.infoPlayerOperationCompleted = new System.Threading.SendOrPostCallback(this.OninfoPlayerOperationCompleted);
+            }
+            this.InvokeAsync("infoPlayer", new object[] {
+                        username}, this.infoPlayerOperationCompleted, userState);
+        }
+        
+        private void OninfoPlayerOperationCompleted(object arg) {
+            if ((this.infoPlayerCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.infoPlayerCompleted(this, new infoPlayerCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -219,32 +219,6 @@ namespace OthelloWebApplication.OthelloService {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
-    public delegate void infoPlayerCompletedEventHandler(object sender, infoPlayerCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class infoPlayerCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal infoPlayerCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public playerProfile Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((playerProfile)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
     public delegate void helloCompletedEventHandler(object sender, helloCompletedEventArgs e);
     
     /// <remarks/>
@@ -265,6 +239,32 @@ namespace OthelloWebApplication.OthelloService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
+    public delegate void infoPlayerCompletedEventHandler(object sender, infoPlayerCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class infoPlayerCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal infoPlayerCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public playerProfile Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((playerProfile)(this.results[0]));
             }
         }
     }

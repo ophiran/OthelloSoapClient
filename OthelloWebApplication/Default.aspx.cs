@@ -27,7 +27,6 @@ namespace OthelloWebApplication
                 items.Add(lItem);
             }
             ListBoxGames.Items.AddRange(items.ToArray());
-            Label2.Text = player.gameList[0];
             System.Diagnostics.Debug.WriteLine(player.gameList[0]);
             Console.Out.WriteLine("toto");
             Console.Out.WriteLine(player.gameList[0]);
