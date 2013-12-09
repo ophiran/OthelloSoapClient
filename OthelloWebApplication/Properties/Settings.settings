@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="OthelloWebApplication_OthelloService_OthelloWebService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://ophiran-laptop:10800/OthelloWebService/OthelloWebService</Value>
+      <Value Profile="(Default)">http://ophiran-pc:10500/OthelloWebService/OthelloWebService</Value>
     </Setting>
   </Settings>
 </SettingsFile>

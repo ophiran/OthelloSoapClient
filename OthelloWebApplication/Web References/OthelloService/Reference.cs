@@ -31,6 +31,8 @@ namespace OthelloWebApplication.OthelloService {
         
         private System.Threading.SendOrPostCallback helloOperationCompleted;
         
+        private @string usernameField;
+        
         private System.Threading.SendOrPostCallback infoPlayerOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
@@ -44,6 +46,15 @@ namespace OthelloWebApplication.OthelloService {
             }
             else {
                 this.useDefaultCredentialsSetExplicitly = true;
+            }
+        }
+        
+        public @string username {
+            get {
+                return this.usernameField;
+            }
+            set {
+                this.usernameField = value;
             }
         }
         
@@ -108,26 +119,27 @@ namespace OthelloWebApplication.OthelloService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("", RequestNamespace="http://webservice/", ResponseNamespace="http://webservice/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public playerProfile infoPlayer([System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] string username) {
+        [System.Web.Services.Protocols.SoapHeaderAttribute("username")]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Bare)]
+        [return: System.Xml.Serialization.XmlElementAttribute("infoPlayerResponse", Namespace="http://webservice/")]
+        public infoPlayerResponse infoPlayer([System.Xml.Serialization.XmlElementAttribute("infoPlayer", Namespace="http://webservice/")] infoPlayer infoPlayer1) {
             object[] results = this.Invoke("infoPlayer", new object[] {
-                        username});
-            return ((playerProfile)(results[0]));
+                        infoPlayer1});
+            return ((infoPlayerResponse)(results[0]));
         }
         
         /// <remarks/>
-        public void infoPlayerAsync(string username) {
-            this.infoPlayerAsync(username, null);
+        public void infoPlayerAsync(infoPlayer infoPlayer1) {
+            this.infoPlayerAsync(infoPlayer1, null);
         }
         
         /// <remarks/>
-        public void infoPlayerAsync(string username, object userState) {
+        public void infoPlayerAsync(infoPlayer infoPlayer1, object userState) {
             if ((this.infoPlayerOperationCompleted == null)) {
                 this.infoPlayerOperationCompleted = new System.Threading.SendOrPostCallback(this.OninfoPlayerOperationCompleted);
             }
             this.InvokeAsync("infoPlayer", new object[] {
-                        username}, this.infoPlayerOperationCompleted, userState);
+                        infoPlayer1}, this.infoPlayerOperationCompleted, userState);
         }
         
         private void OninfoPlayerOperationCompleted(object arg) {
@@ -154,6 +166,38 @@ namespace OthelloWebApplication.OthelloService {
             }
             return false;
         }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2001/XMLSchema")]
+    [System.Xml.Serialization.XmlRootAttribute("username", Namespace="http://webservice/", IsNullable=true)]
+    public partial class @string : System.Web.Services.Protocols.SoapHeader {
+        
+        private string[] textField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string[] Text {
+            get {
+                return this.textField;
+            }
+            set {
+                this.textField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://webservice/")]
+    public partial class infoPlayer {
     }
     
     /// <remarks/>
@@ -218,6 +262,28 @@ namespace OthelloWebApplication.OthelloService {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18408")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://webservice/")]
+    public partial class infoPlayerResponse {
+        
+        private playerProfile returnField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public playerProfile @return {
+            get {
+                return this.returnField;
+            }
+            set {
+                this.returnField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
     public delegate void helloCompletedEventHandler(object sender, helloCompletedEventArgs e);
     
@@ -261,10 +327,10 @@ namespace OthelloWebApplication.OthelloService {
         }
         
         /// <remarks/>
-        public playerProfile Result {
+        public infoPlayerResponse Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((playerProfile)(this.results[0]));
+                return ((infoPlayerResponse)(this.results[0]));
             }
         }
     }

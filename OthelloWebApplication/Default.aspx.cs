@@ -15,22 +15,44 @@ namespace OthelloWebApplication
     {
 
         OthelloWebService proxy;
-
+        playerProfile player;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             proxy = new OthelloWebService();
-            playerProfile player = proxy.infoPlayer("toto");
+            string query = this.Request.Url.Query;
+            /*
+            foreach(string key in this.Request.Url.Query)
+            {
+                Console.Out.WriteLine(key);
+            }*/
+
+            infoPlayer test = new infoPlayer();
+            infoPlayerResponse resp;
+
+            @string name = new OthelloService.@string();
+            name.Actor = "toto";
+            proxy.username = name;
+
+            
+            resp = proxy.infoPlayer(test);
+            player = resp.@return;
+            
             List<ListItem> items = new List<ListItem>();
             foreach (string item in player.gameList)
             {
                 ListItem lItem = new ListItem(item.Replace("&nbsp;", " "));
                 items.Add(lItem);
             }
+            ListBoxGames.Items.Clear();
             ListBoxGames.Items.AddRange(items.ToArray());
-            System.Diagnostics.Debug.WriteLine(player.gameList[0]);
-            Console.Out.WriteLine("toto");
-            Console.Out.WriteLine(player.gameList[0]);
+
+            UserName.Text = "Username: " + player.username;
+            wins.Text = "Wins: " + player.wins;
+            losses.Text = "Losses: " + player.loss;
         }
+
+        
 
 
     }

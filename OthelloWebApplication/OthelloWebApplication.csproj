@@ -205,13 +205,13 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Site.Mobile.Master" />
+    <Content Include="Web References\OthelloService\infoPlayerResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
     <None Include="Web References\OthelloService\OthelloWebService.wsdl" />
     <None Include="Web References\OthelloService\OthelloWebService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Web References\OthelloService\playerProfile.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
     <None Include="Web References\OthelloService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -331,10 +331,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://ophiran-laptop:10800/OthelloWebService/OthelloWebService%3fwsdl">
+    <WebReferenceUrl Include="http://ophiran-pc:10500/OthelloWebService/OthelloWebService%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\OthelloService\</RelPath>
-      <UpdateFromURL>http://ophiran-laptop:10800/OthelloWebService/OthelloWebService%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://ophiran-pc:10500/OthelloWebService/OthelloWebService%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

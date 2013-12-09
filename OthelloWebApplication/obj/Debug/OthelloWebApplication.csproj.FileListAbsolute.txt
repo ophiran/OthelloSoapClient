@@ -96,6 +96,6 @@ C:\Users\Ophiran\Source\Repos\OthelloSoapClient\OthelloWebApplication\bin\Micros
 C:\Users\Ophiran\Source\Repos\OthelloSoapClient\OthelloWebApplication\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Ophiran\Source\Repos\OthelloSoapClient\OthelloWebApplication\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Ophiran\Source\Repos\OthelloSoapClient\OthelloWebApplication\bin\Microsoft.Owin.Security.OAuth.xml
-C:\Users\Ophiran\Source\Repos\OthelloSoapClient\OthelloWebApplication\obj\Debug\OthelloWebApplication.csprojResolveAssemblyReference.cache
 C:\Users\Ophiran\Source\Repos\OthelloSoapClient\OthelloWebApplication\obj\Debug\OthelloWebApplication.dll
 C:\Users\Ophiran\Source\Repos\OthelloSoapClient\OthelloWebApplication\obj\Debug\OthelloWebApplication.pdb
+C:\Users\Ophiran\Source\Repos\OthelloSoapClient\OthelloWebApplication\obj\Debug\OthelloWebApplication.csprojResolveAssemblyReference.cache

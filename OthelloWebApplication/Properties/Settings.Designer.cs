@@ -26,7 +26,7 @@ namespace OthelloWebApplication.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://ophiran-laptop:10800/OthelloWebService/OthelloWebService")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://ophiran-pc:10500/OthelloWebService/OthelloWebService")]
         public string OthelloWebApplication_OthelloService_OthelloWebService {
             get {
                 return ((string)(this["OthelloWebApplication_OthelloService_OthelloWebService"]));
