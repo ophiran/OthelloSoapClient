@@ -19,23 +19,13 @@ namespace OthelloWebApplication
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            proxy = new OthelloWebService();
+            proxy = new OthelloWebServiceClient();
             string query = this.Request.Url.Query;
-            /*
-            foreach(string key in this.Request.Url.Query)
-            {
-                Console.Out.WriteLine(key);
-            }*/
-
-            infoPlayer test = new infoPlayer();
-            infoPlayerResponse resp;
-
-            @string name = new OthelloService.@string();
-            name.Actor = "toto";
-            proxy.username = name;
-
             
-            resp = proxy.infoPlayer(test);
+            //infoPlayer test = new infoPlayer();
+            infoPlayerResponse resp;
+            
+            resp = proxy.infoPlayer(new infoPlayerRequest("toto"));
             player = resp.@return;
             
             List<ListItem> items = new List<ListItem>();

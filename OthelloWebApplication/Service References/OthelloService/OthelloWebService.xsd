@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://webservice/" targetNamespace="http://webservice/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="hello" type="tns:hello" />
+  <xs:element name="helloResponse" type="tns:helloResponse" />
+  <xs:element name="infoPlayer" type="tns:infoPlayer" />
+  <xs:element name="infoPlayerResponse" type="tns:infoPlayerResponse" />
+  <xs:element name="playerProfile" type="tns:playerProfile" />
+  <xs:complexType name="hello">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="helloResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="infoPlayer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="username" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="infoPlayerResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:playerProfile" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="playerProfile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="username" type="xs:string" />
+      <xs:element name="wins" type="xs:int" />
+      <xs:element name="loss" type="xs:int" />
+    </xs:sequence>
+    <xs:attribute name="gameList">
+      <xs:simpleType>
+        <xs:list itemType="xs:string" />
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+</xs:schema>
